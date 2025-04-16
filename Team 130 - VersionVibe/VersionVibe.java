@@ -12,6 +12,7 @@ public class VersionVibe {
     private VersionNode currentVersion;
     private Map<String, VersionNode> versionMap = new HashMap<>();
     private JFileChooser fileChooser = new JFileChooser();
+    private int fontSize = 14;  // Default font size
 
     public static void main(String[] args) {
         // just starting the app on the Event Dispatch Thread
@@ -22,6 +23,7 @@ public class VersionVibe {
     public VersionVibe() {
         frame = new JFrame("Versioned Text Editor");
         textArea = new JTextArea(20, 60);
+        textArea.setFont(new Font("Arial", Font.PLAIN, fontSize)); // Set default font size
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         JButton undoButton = new JButton("Undo");
@@ -62,16 +64,16 @@ public class VersionVibe {
         frame.setVisible(true);
     }
 
-    // Creating the File and Edit menu
+    // Creating the File, Edit, and View menu
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fileMenu = new JMenu("File");
-        JMenuItem newTab = new JMenuItem("New Tab");
+        // JMenuItem newTab = new JMenuItem("New Tab");
         JMenuItem open = new JMenuItem("Open");
         JMenuItem save = new JMenuItem("Save");
         JMenuItem print = new JMenuItem("Print");
-        JMenuItem close = new JMenuItem("Close Tab");
+        // JMenuItem close = new JMenuItem("Close Tab");
         JMenuItem exit = new JMenuItem("Exit");
 
         newTab.addActionListener(e -> textArea.setText(""));
@@ -116,9 +118,33 @@ public class VersionVibe {
         editMenu.add(find);
         editMenu.add(replace);
 
+        JMenu viewMenu = new JMenu("View");
+        JMenuItem zoomIn = new JMenuItem("Zoom In");
+        JMenuItem zoomOut = new JMenuItem("Zoom Out");
+
+        zoomIn.addActionListener(e -> zoomIn());
+        zoomOut.addActionListener(e -> zoomOut());
+
+        viewMenu.add(zoomIn);
+        viewMenu.add(zoomOut);
+
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
+        menuBar.add(viewMenu); // Added View menu
+
         return menuBar;
+    }
+
+    // Zoom In functionality
+    private void zoomIn() {
+        fontSize += 2;  // Increase font size by 2
+        textArea.setFont(new Font("Arial", Font.PLAIN, fontSize));
+    }
+
+    // Zoom Out functionality
+    private void zoomOut() {
+        fontSize = Math.max(8, fontSize - 2);  // Decrease font size by 2 (min 8px)
+        textArea.setFont(new Font("Arial", Font.PLAIN, fontSize));
     }
 
     // Save a version of the text
@@ -203,11 +229,6 @@ public class VersionVibe {
             try (FileWriter writer = new FileWriter(file)) {
                 writer.write(textArea.getText());
 
-                //writer.write("\n\n--- Version History ---\n");
-                // for (VersionNode version : versionMap.values()) {
-                //     writer.write(version.hash + ": " + version.content + "\n");
-                // }
-
                 JOptionPane.showMessageDialog(frame, "File saved successfully.");
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(frame, "Error saving file.");
@@ -268,25 +289,24 @@ public class VersionVibe {
                 summary.append(oldWords[i]).append(" -> ").append(newWords[i]).append(", ");
             }
         }
-        return summary.length() > 0 ? summary.toString() : "No change";
-    }
-}
-
-// Node representing a version of the text
-class VersionNode {
-    String content;
-    String hash;
-    VersionNode parent;
-    List<VersionNode> children;
-
-    VersionNode(String content, VersionNode parent) {
-        this.content = content;
-        this.parent = parent;
-        this.children = new ArrayList<>();
-        this.hash = Integer.toHexString(content.hashCode()); // quick way to ID versions
+        return summary.length() > 0 ? summary.toString() : "No changes";
     }
 
-    public String toString() {
-        return "Version: " + hash;
+    // Inner class to represent versions
+    private static class VersionNode {
+        String content;
+        VersionNode parent;
+        List<VersionNode> children = new ArrayList<>();
+        String hash = UUID.randomUUID().toString();
+
+        VersionNode(String content, VersionNode parent) {
+            this.content = content;
+            this.parent = parent;
+        }
+
+        @Override
+        public String toString() {
+            return "Version " + hash.substring(0, 6);
+        }
     }
 }
