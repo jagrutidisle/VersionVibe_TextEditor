@@ -4,6 +4,7 @@ Submission for Buffer 6.0
 Theme: Custom Data Structures in Real-Life Applications
 Group No. 130
 Video link:https://drive.google.com/file/d/1yYC3F9aF015GJeuaEkTYsJPluC_J5_VB/view?usp=sharing
+
 What’s the Idea?
 VersionVibe is not just a text editor—it’s a version-aware editor with its own custom-built version control system! Think Git, but handcrafted from scratch and baked directly into a friendly Java GUI. Built for the "Custom Data Structures" theme, this project showcases how a tree-based structure can be applied to real-world scenarios like document editing and version tracking. Each version of the document is a node, and every edit becomes a new branch in your document's evolution.
 
@@ -79,3 +80,4 @@ Markdown preview
 Team Info :-
 Vrunani Muley,Jagruti Disle & Dhammavi Pilewan
 "We believe code should not just work, it should think. That’s what custom data structures let us do—build software that adapts to our minds, not the other way around."
+
