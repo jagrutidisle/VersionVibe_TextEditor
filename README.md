@@ -4,61 +4,60 @@ Theme: Custom Data Structures in Real-Life Applications
 Group No.: 130
 
 What’s the Idea?
-	VersionVibe integrates a custom-built version control system directly into a user-friendly Java GUI. Unlike Git, this system is handcrafted from scratch, emphasizing ease of use and seamless integration with document editing.
+
+->VersionVibe is a custom-built text editor that integrates version control directly into the app. Unlike traditional version control tools like Git, it uses a tree-based data structure for tracking versions, allowing users to explore document histories, undo changes, and branch into alternate document versions seamlessly. All of this is embedded into a simple Java Swing GUI for easy, intuitive use.
 
 Goals
-	VersionVibe allows users to explore alternate timelines of their documents through a version-aware interface, simplifying version tracking and management compared to traditional tools like Git.
 
-Custom Data Structure – How We Built the Magic
-	The core is a custom version tree:
-	class VersionNode {
-	    String content;
-	    String hash; // Version ID using SHA-1 hashing
-	    VersionNode parent;
-	    List<VersionNode> children;
-	}
-	Each edit creates a new node in the tree, enabling robust undo and redo functionalities with branching support.
+->The main goal is to make version tracking as easy as typing. VersionVibe simplifies version management by eliminating the need for external tools like Git, offering an integrated, user-friendly interface where every document change is tracked as a version, allowing users to navigate through different versions effortlessly.
+
+Custom Data Structure
+
+->The core of VersionVibe is a custom version tree. Each version of a document is represented as a node containing the document’s content, a unique hash (SHA-1), and pointers to its parent and child versions. This structure supports undo/redo with branching, offering users a non-linear path through their document's history.
 
 Key Features
-	Custom Versioning Tree for undo/redo with branching
-	Save Version (Ctrl+S) with auto-generated IDs
-	Visual undo and redo with context navigation
-	Find & Replace, Cut/Copy/Paste tools
-	File operations: Open, Save, Print, Exit
-	Change Summary dialog for version comparison
 
-Demo Flow
-	Start VersionVibe, create or open a document.
-	Save versions (Ctrl+S) to create nodes in the version tree.
-	Navigate through edit history with undo and redo, exploring multiple branches.
-	Compare versions using the Change Summary dialog.
+->Custom Versioning Tree: Undo/redo with branching.
 
-File Structure
-	VersionVibe.java
-	├── VersionNode.java
-	├── LandingPage.java
-	├── logo.jpg
+->Save Version: Auto-generated IDs for each version.
+
+->Version Comparison: View changes using the Change Summary dialog.
+
+->Basic Text Editing: Includes Find & Replace, Cut/Copy/Paste tools.
+
+->File Operations: Open, Save, Print, Exit.
+
 Why This Matters
-	VersionVibe reimagines text editors by embedding a custom version control system directly within the application. It focuses on simplicity and performance while avoiding external dependencies like Git, offering a self-contained Java-based solution.
+
+->VersionVibe reimagines text editors by embedding custom version control directly into the application. It's simple, intuitive, and fast—ideal for those who want to manage document versions without relying on external tools like Git.
 
 Built With
-	Java (Java Swing for GUI)
-	Custom tree-based structure (VersionNode class)
-	Determination and debugging skills
- 
-Challenges We Faced
-	Implementing redo with branching logic
-	Ensuring responsive GUI with complex version logic
-	Designing readable change summaries
-	Balancing file I/O and in-memory operations for efficiency
+
+->Java (Java Swing for GUI)
+
+->Custom tree-based version control (VersionNode class)
+
+Challenges
+
+->Implementing branching redo functionality.
+
+->Ensuring GUI responsiveness during complex version tracking.
+
+->Designing readable change summaries and balancing memory efficiency with file I/O.
 
 Future Upgrades
-	reopening the file with the version tree 
-	Visual version tree viewer
-	Persistent version history across app restarts
-	Markdown preview
-	AI-based change suggestions
 
-Team Info
-	Vrunani Muley, Jagruti Disle & Dhammavi Pilewan
-"We believe in crafting software that adapts to user needs through custom data structures, not the other way around."
+->Dark mode
+
+->Visual version tree viewer
+
+->Persistent version history
+
+->Markdown preview
+
+->AI-based change suggestions
+
+Team
+
+->Vrunani Muley, Jagruti Disle & Dhammavi Pilewan
+"Crafting software that adapts to user needs through custom data structures."
