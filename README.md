@@ -2,7 +2,7 @@ VersionVibe – A Text Editor That Versions Differently
 Submission for Buffer 6.0
 Theme: Custom Data Structures in Real-Life Applications
 Group No.: 130
-
+Video Link:https://drive.google.com/file/d/1yYC3F9aF015GJeuaEkTYsJPluC_J5_VB/view?usp=sharing
 What’s the Idea?
 
 ->VersionVibe is a custom-built text editor that integrates version control directly into the app. Unlike traditional version control tools like Git, it uses a tree-based data structure for tracking versions, allowing users to explore document histories, undo changes, and branch into alternate document versions seamlessly. All of this is embedded into a simple Java Swing GUI for easy, intuitive use.
