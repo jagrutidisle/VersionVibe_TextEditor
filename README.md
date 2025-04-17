@@ -16,7 +16,7 @@ Undo and Redo with context—choose your path.
 Visualize versioning through meaningful dialogs.
 All wrapped in a clean Java Swing GUI.
 
-Custom Data Structure – How We Built the Magic
+Custom Data Structure – 
 At the core of this editor is a custom version tree:
 VersionNode {
     String content;
@@ -39,7 +39,7 @@ File operations: Open, Save, Print, Exit
 Change Summary dialog to compare versions
 Tree-structured in-memory history (custom built, no Git or Libs)
 
-🎥 Demo Flow :-
+Demo Flow :-
 Start the app, type something cool.
 Save a version (Ctrl+S) – boom! That’s a node.
 Make more edits, save again – another node.
