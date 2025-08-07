@@ -1,7 +1,6 @@
 VersionVibe – A Text Editor That Versions Differently
-Submission for Buffer 6.0
-Theme: Custom Data Structures in Real-Life Applications
-Group No.: 130
+
+
 Video Link:https://drive.google.com/file/d/1yYC3F9aF015GJeuaEkTYsJPluC_J5_VB/view?usp=sharing
 What’s the Idea?
 
